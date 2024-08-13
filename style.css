@@ -90,3 +90,11 @@ img {
     font-weight: 500;
     font-style: normal;
 }
+
+footer {
+    color: black;
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
