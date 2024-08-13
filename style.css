@@ -14,13 +14,21 @@ body {
     font-style: normal;
     color: white;
 }
-.Contenido {
+main {
     background: linear-gradient(180deg, #1A2A35 15%, #484785 100%);
     }
 
+article {
+    padding-left: 5%;
+    padding-right: 5%;
+}
 img {
     display: block;
     margin: 0 auto;
+}
+
+h2 {
+    padding-top: 3.5rem;
 }
 
 .Banner {
