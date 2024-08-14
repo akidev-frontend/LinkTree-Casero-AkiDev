@@ -1,3 +1,140 @@
+@-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes scale-in-ver-top {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-ver-top {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes scale-in-ver-bottom {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 0% 100%;
+              transform-origin: 0% 100%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      -webkit-transform-origin: 0% 100%;
+              transform-origin: 0% 100%;
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-ver-bottom {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 0% 100%;
+              transform-origin: 0% 100%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      -webkit-transform-origin: 0% 100%;
+              transform-origin: 0% 100%;
+      opacity: 1;
+    }
+  }
+  @keyframes color-change-3x {
+    0% {
+      background: #19dcea;
+    }
+    50% {
+      background: #b22cff;
+    }
+    100% {
+      background: #ea2222;
+    }
+  }
+  @keyframes vibrate-1 {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+  @keyframes tracking-in-expand-fwd {
+    0% {
+      letter-spacing: -0.5em;
+      transform: translateZ(-700px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+
+
 body {
     max-width: 500px;
     box-sizing: border-box;
@@ -83,11 +220,18 @@ p, button{
     z-index: 2;
     margin-top: -3.5rem;
     margin-bottom: -1.2rem;
+
+    /* Animación */
+    -webkit-animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .AkiDev {
     font-size: 2.3rem;
     margin-bottom: -1.0rem;
+
+    /* Animación */
+    animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 .FrontEnd_Developer {
@@ -96,6 +240,10 @@ p, button{
     font-weight: 200;
     padding-left: 5%;
     padding-right: 5%;
+
+
+    -webkit-animation: scale-in-ver-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-in-ver-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 .RedesSociales {
     display: flex;
@@ -107,7 +255,7 @@ p, button{
         margin: 0 auto;
     }
 
-    background-color: #6E8AC7;
+    animation: color-change-3x 4s linear infinite alternate both;
 
     margin-bottom: 6.5rem;
     
@@ -120,7 +268,7 @@ p, button{
    
 }
 
-.BotónMembresia {
+.Botón {
     border: none;
     cursor: pointer;
 
@@ -130,11 +278,28 @@ p, button{
     padding-top: 1rem;
     padding-bottom: 1rem;
 
+    width: 90%;
+    border: 2px solid black;
+    border-radius: 5px;
+
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+
+    animation: vibrate-1 0.3s linear infinite both;
+
 }
+
+.Botón:hover {
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+
+.Botón:not(:hover) {
+    transform: scale(1);
+    transition-duration: 0.6s;
+  }
 
 footer {
     color: black;
@@ -143,3 +308,4 @@ footer {
         cursor: pointer;
     }
 }
+
