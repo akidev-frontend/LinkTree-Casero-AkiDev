@@ -1,0 +1,114 @@
+/* Estilos principales */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0 10%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #0073e6;
+    margin-top: 1em;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #005bb5;
+    margin-top: 2em;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+
+/* Botón de llamada a la acción */
+.cta-button {
+    font-size: 1.2em;
+    color: white;
+    background-color: #0073e6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Sección de Autor */
+.about-author {
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Lista de beneficios */
+ul.benefits-list, ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1em 0;
+}
+
+ul.benefits-list li, ul li {
+    font-size: 1em;
+    text-align: left;
+    margin: 0.5em 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-left: 4px solid #0073e6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul li strong {
+    color: #333;
+}
+
+/* Vista previa del ebook */
+.preview {
+    margin: 2em 0;
+}
+
+.preview img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de preguntas frecuentes */
+.faq {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.faq-item {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.faq-item h3 {
+    text-align: center;
+    font-size: 1.2em;
+    color: #005bb5;
+}
+
+.faq-item p {
+    font-size: 1em;
+    color: #333;
+    margin-left: 15px;
+}
+
+/* Estilos para el iframe de suscripción */
+iframe {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 4px;
+}
