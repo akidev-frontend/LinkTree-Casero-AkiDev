@@ -321,6 +321,127 @@
             font-weight: 600;
         }
 
+        /* Newsletter Form Styles */
+        .listmonk-form {
+            margin-top: 2rem;
+        }
+
+        .newsletter-form-container {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form-container:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
+        }
+
+        .newsletter-form-title {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--text-light), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-gray);
+            opacity: 0.8;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .checkbox-content {
+            flex: 1;
+        }
+
+        .checkbox-label {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            cursor: pointer;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-description {
+            color: var(--text-gray);
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
+            line-height: 1.5;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-color), #6BB6FF);
+            color: var(--white);
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+            animation: glow 2s infinite;
+        }
+
+        .form-submit:active {
+            transform: translateY(-1px);
+        }
+
         /* Buttons */
         .cta-button {
             display: inline-block;
@@ -396,6 +517,10 @@
                 margin-bottom: 2rem;
             }
 
+            .newsletter-form-container {
+                padding: 2rem;
+            }
+
             .social-links {
                 gap: 1rem;
             }
@@ -412,9 +537,18 @@
                 padding: 1.5rem;
             }
 
+            .newsletter-form-container {
+                padding: 1.5rem;
+            }
+
             .cta-button {
                 width: 100%;
                 text-align: center;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
 
@@ -472,7 +606,32 @@
                 Si lo entiendes, bienvenido al grupo. Si no lo entiendes pero te gustaría entenderlo, también eres bienvenido.
             </p>
             <p class="section-text">¿A qué esperas?</p>
-            <a href="https://app.zagomail.com/forms/preview?id=6181" class="cta-button">¡Me quiero unir ya!</a>
+            
+            <!-- Newsletter Form -->
+            <form method="post" action="https://listmonk.akidojo.dev/subscription/form" class="listmonk-form">
+                <div class="newsletter-form-container">
+                    <h3 class="newsletter-form-title">¡Únete a la newsletter!</h3>
+                    <input type="hidden" name="nonce" />
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" required placeholder="Correo electrónico" class="form-input" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Nombre (opcional)" class="form-input" />
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input id="b4f01" type="checkbox" name="l" checked value="b4f01952-65a2-4460-92e7-c058ae2775de" class="form-checkbox" />
+                        <div class="checkbox-content">
+                            <label for="b4f01" class="checkbox-label">Newsletter gratuita</label>
+                            <span class="checkbox-description">Lista para la newsletter gratuita de AkiDev</span>
+                        </div>
+                    </div>
+                    
+                    <input type="submit" value="¡Me quiero unir ya!" class="form-submit" />
+                </div>
+            </form>
         </section>
 
         <!-- Section 2 -->
