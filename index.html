@@ -1,777 +1,1113 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AkiDev - Frontend Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            --primary-color: #192A34;
-            --secondary-color: #2A3F4D;
-            --accent-color: #4A90E2;
-            --text-light: #E8F4FD;
-            --text-gray: #A0B4C0;
-            --white: #FFFFFF;
-            --gradient: linear-gradient(135deg, #192A34 0%, #2A3F4D 100%);
-            --shadow: 0 10px 40px rgba(25, 42, 52, 0.3);
-            --border-radius: 16px;
-        }
+      :root {
+        --primary-color: #192a34;
+        --secondary-color: #2a3f4d;
+        --accent-color: #4a90e2;
+        --text-light: #e8f4fd;
+        --text-gray: #a0b4c0;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #192a34 0%, #2a3f4d 100%);
+        --shadow: 0 10px 40px rgba(25, 42, 52, 0.3);
+        --border-radius: 16px;
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--gradient);
-            color: var(--text-light);
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--gradient);
+        color: var(--text-light);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
 
-        /* Fondo animado con figuras geométricas */
-        .animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+      /* Fondo animado con figuras geométricas */
+      .animated-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
 
-        .geometric-shape {
-            position: absolute;
-            opacity: 0.3;
-            animation: float-geometric 20s infinite linear;
-        }
+      .geometric-shape {
+        position: absolute;
+        opacity: 0.3;
+        animation: float-geometric 20s infinite linear;
+      }
 
-        .shape-circle {
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent-color), transparent);
-        }
+      .shape-circle {
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--accent-color), transparent);
+      }
 
-        .shape-square {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-        }
+      .shape-square {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: rotate(45deg);
+      }
 
-        .shape-triangle {
-            width: 0;
-            height: 0;
-            background: transparent;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-bottom: 43px solid rgba(74, 144, 226, 0.1);
-        }
+      .shape-triangle {
+        width: 0;
+        height: 0;
+        background: transparent;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 43px solid rgba(74, 144, 226, 0.1);
+      }
 
-        .shape-hexagon {
-            width: 60px;
-            height: 34.64px;
-            background: rgba(255, 255, 255, 0.05);
-            position: relative;
-            margin: 17.32px 0;
-        }
+      .shape-hexagon {
+        width: 60px;
+        height: 34.64px;
+        background: rgba(255, 255, 255, 0.05);
+        position: relative;
+        margin: 17.32px 0;
+      }
 
-        .shape-hexagon:before,
-        .shape-hexagon:after {
-            content: "";
-            position: absolute;
-            width: 0;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
-        }
+      .shape-hexagon:before,
+      .shape-hexagon:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+      }
 
-        .shape-hexagon:before {
-            bottom: 100%;
-            border-bottom: 17.32px solid rgba(255, 255, 255, 0.05);
-        }
+      .shape-hexagon:before {
+        bottom: 100%;
+        border-bottom: 17.32px solid rgba(255, 255, 255, 0.05);
+      }
 
-        .shape-hexagon:after {
-            top: 100%;
-            border-top: 17.32px solid rgba(255, 255, 255, 0.05);
-        }
+      .shape-hexagon:after {
+        top: 100%;
+        border-top: 17.32px solid rgba(255, 255, 255, 0.05);
+      }
 
-        @keyframes float-geometric {
-            0% {
-                transform: translateY(100vh) translateX(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.3;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
+      @keyframes float-geometric {
+        0% {
+          transform: translateY(100vh) translateX(-100px) rotate(0deg);
+          opacity: 0;
         }
-
-        @keyframes float-geometric-reverse {
-            0% {
-                transform: translateY(-100px) translateX(100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.25;
-            }
-            90% {
-                opacity: 0.25;
-            }
-            100% {
-                transform: translateY(100vh) translateX(-100px) rotate(-360deg);
-                opacity: 0;
-            }
+        10% {
+          opacity: 0.3;
         }
-
-        @keyframes pulse-gentle {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.4;
-            }
+        90% {
+          opacity: 0.3;
         }
-
-        /* Animaciones */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        100% {
+          transform: translateY(-100px) translateX(100px) rotate(360deg);
+          opacity: 0;
         }
+      }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+      @keyframes float-geometric-reverse {
+        0% {
+          transform: translateY(-100px) translateX(100px) rotate(0deg);
+          opacity: 0;
         }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        10% {
+          opacity: 0.25;
         }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        90% {
+          opacity: 0.25;
         }
-
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-            }
+        100% {
+          transform: translateY(100vh) translateX(-100px) rotate(-360deg);
+          opacity: 0;
         }
+      }
 
-        /* Container principal */
+      @keyframes pulse-gentle {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.4;
+        }
+      }
+
+      /* Animaciones */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
+        }
+      }
+
+      /* Container principal */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        padding: 4rem 0;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 2rem;
+        background: linear-gradient(135deg, var(--accent-color), #6bb6ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        animation: scaleIn 0.8s ease-out 0.3s both,
+          float 3s ease-in-out infinite 2s;
+        box-shadow: var(--shadow);
+      }
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+      }
+
+      .main-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--text-light),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: slideInLeft 1s ease-out 0.5s both;
+      }
+
+      .subtitle {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        color: var(--text-gray);
+        font-weight: 400;
+        margin-bottom: 3rem;
+        animation: fadeInUp 1s ease-out 0.7s both;
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+        animation: fadeInUp 1s ease-out 0.9s both;
+      }
+
+      .social-link {
+        width: 60px;
+        height: 60px;
+        background: var(--secondary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--text-light);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .social-link:hover {
+        background: var(--accent-color);
+        transform: translateY(-5px) scale(1.1);
+        animation: glow 2s infinite;
+      }
+
+      /* Sections */
+      .section {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: var(--border-radius);
+        padding: 3rem;
+        margin-bottom: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .section:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+
+      .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--text-light);
+      }
+
+      .section-text {
+        font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+        color: var(--text-gray);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .highlight {
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+
+      /* Newsletter Form Styles */
+      .listmonk-form {
+        margin-top: 2rem;
+      }
+
+      .newsletter-form-container {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border-radius: var(--border-radius);
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form-container:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
+      }
+
+      .newsletter-form-title {
+        font-size: clamp(1.5rem, 3.5vw, 2rem);
+        font-weight: 600;
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--text-light),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: var(--text-light);
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+        font-family: "Inter", sans-serif;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .form-input::placeholder {
+        color: var(--text-gray);
+        opacity: 0.8;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-checkbox {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        accent-color: var(--accent-color);
+        cursor: pointer;
+      }
+
+      .checkbox-content {
+        flex: 1;
+      }
+
+      .checkbox-label {
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+        cursor: pointer;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .checkbox-description {
+        color: var(--text-gray);
+        font-size: clamp(0.9rem, 2.2vw, 1rem);
+        line-height: 1.5;
+      }
+
+      .form-submit {
+        width: 100%;
+        background: linear-gradient(135deg, var(--accent-color), #6bb6ff);
+        color: var(--white);
+        padding: 1.2rem 2rem;
+        border: none;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+        font-family: "Inter", sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+      }
+
+      .form-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        animation: glow 2s infinite;
+      }
+
+      .form-submit:active {
+        transform: translateY(-1px);
+      }
+
+      /* Buttons */
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--accent-color), #6bb6ff);
+        color: var(--white);
+        padding: 1rem 2.5rem;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        margin-top: 1rem;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        animation: glow 2s infinite;
+      }
+
+      .cta-button:active {
+        transform: translateY(-1px);
+      }
+
+      /* Code block */
+      .code-block {
+        background: var(--primary-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        color: var(--text-light);
+        border-left: 4px solid var(--accent-color);
+        overflow-x: auto;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 3rem 0 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 4rem;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      .footer a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: var(--text-light);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+          padding: 1rem 0.5rem;
         }
 
-        /* Header */
         .header {
-            text-align: center;
-            padding: 4rem 0;
-            animation: fadeInUp 1s ease-out;
+          padding: 2rem 0;
         }
 
-        .logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, var(--accent-color), #6BB6FF);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            animation: scaleIn 0.8s ease-out 0.3s both, float 3s ease-in-out infinite 2s;
-            box-shadow: var(--shadow);
-        }
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: block;
-        }
-
-        .main-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-light), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInLeft 1s ease-out 0.5s both;
-        }
-
-        .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: var(--text-gray);
-            font-weight: 400;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out 0.7s both;
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-            animation: fadeInUp 1s ease-out 0.9s both;
-        }
-
-        .social-link {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .social-link:hover {
-            background: var(--accent-color);
-            transform: translateY(-5px) scale(1.1);
-            animation: glow 2s infinite;
-        }
-
-        /* Sections */
         .section {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            padding: 3rem;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .section:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .section-text {
-            font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .highlight {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        /* Newsletter Form Styles */
-        .listmonk-form {
-            margin-top: 2rem;
+          padding: 2rem;
+          margin-bottom: 2rem;
         }
 
         .newsletter-form-container {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
+          padding: 2rem;
         }
 
-        .newsletter-form-container:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
+        .social-links {
+          gap: 1rem;
         }
 
-        .newsletter-form-title {
-            font-size: clamp(1.5rem, 3.5vw, 2rem);
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--text-light), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .social-link {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section {
+          padding: 1.5rem;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .newsletter-form-container {
+          padding: 1.5rem;
         }
 
-        .form-input {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            color: var(--text-light);
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-gray);
-            opacity: 0.8;
+        .cta-button {
+          width: 100%;
+          text-align: center;
         }
 
         .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+          flex-direction: column;
+          gap: 0.5rem;
         }
+      }
 
-        .form-checkbox {
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
-            accent-color: var(--accent-color);
-            cursor: pointer;
-        }
+      /* Intersection Observer animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
 
-        .checkbox-content {
-            flex: 1;
-        }
-
-        .checkbox-label {
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            cursor: pointer;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .checkbox-description {
-            color: var(--text-gray);
-            font-size: clamp(0.9rem, 2.2vw, 1rem);
-            line-height: 1.5;
-        }
-
-        .form-submit {
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent-color), #6BB6FF);
-            color: var(--white);
-            padding: 1.2rem 2rem;
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: clamp(1.1rem, 2.8vw, 1.3rem);
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-        }
-
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
-            animation: glow 2s infinite;
-        }
-
-        .form-submit:active {
-            transform: translateY(-1px);
-        }
-
-        /* Buttons */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-color), #6BB6FF);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: clamp(1.1rem, 2.8vw, 1.3rem);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-            margin-top: 1rem;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
-            animation: glow 2s infinite;
-        }
-
-        .cta-button:active {
-            transform: translateY(-1px);
-        }
-
-        /* Code block */
-        .code-block {
-            background: var(--primary-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            border-left: 4px solid var(--accent-color);
-            overflow-x: auto;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4rem;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--text-light);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem 0.5rem;
-            }
-
-            .header {
-                padding: 2rem 0;
-            }
-
-            .section {
-                padding: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .newsletter-form-container {
-                padding: 2rem;
-            }
-
-            .social-links {
-                gap: 1rem;
-            }
-
-            .social-link {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 1.5rem;
-            }
-
-            .newsletter-form-container {
-                padding: 1.5rem;
-            }
-
-            .cta-button {
-                width: 100%;
-                text-align: center;
-            }
-
-            .checkbox-group {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-
-        /* Intersection Observer animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Fondo animado -->
     <div class="animated-background" id="animatedBg"></div>
-    
+
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo"> <img src="src/Logo.webp" alt=""></div>
-            <h1 class="main-title">AkiDev</h1>
-            <p class="subtitle">Te enseño Frontend sin tonterías</p>
-        </header>
+      <!-- Header -->
+      <header class="header">
+        <div class="logo"><img src="src/Logo.webp" alt="" /></div>
+        <h1 class="main-title">AkiDev</h1>
+        <p class="subtitle">Te enseño Frontend sin tonterías</p>
+      </header>
 
-        <!-- Section 1 -->
-        <section class="section fade-in">
-            <h2 class="section-title">Optimiza tu tiempo y trabaja con cabeza</h2>
-            <p class="section-text">
-                El frontend es un campo muy grande en el que fácilmente te puedes perder. 
-                Lleno de tecnicismos y palabras raras (muy raras).
-            </p>
-            <p class="section-text">
-                Si no tienes a alguien con quien absorber ese conocimiento, malgastarás una de tiempo que te gustaría tener.
-            </p>
-            <p class="section-text">
-                Por eso, he creado una <span class="highlight">membresía totalmente gratis</span> donde comparto trucos y consejos 
-                basados en mi experiencia para que puedas aprender más en menos tiempo.
-            </p>
-            <p class="section-text">¿Acaso entiendes esto?:</p>
-            <div class="code-block">
-                "Si codeas con un framework nuevo y el código no compila, depura el código y revisa la sintaxis antes de hacer un commit hacia GitHub."
+      <!-- Section 1 -->
+      <section class="section fade-in">
+        <h2 class="section-title">Optimiza tu tiempo y trabaja con cabeza</h2>
+        <p class="section-text">
+          El frontend es un campo muy grande en el que fácilmente te puedes
+          perder. Lleno de tecnicismos y palabras raras (muy raras).
+        </p>
+        <p class="section-text">
+          Si no tienes a alguien con quien absorber ese conocimiento,
+          malgastarás una de tiempo que te gustaría tener.
+        </p>
+        <p class="section-text">
+          Por eso, he creado una
+          <span class="highlight">membresía totalmente gratis</span> donde
+          comparto trucos y consejos basados en mi experiencia para que puedas
+          aprender más en menos tiempo.
+        </p>
+        <p class="section-text">¿Acaso entiendes esto?:</p>
+        <div class="code-block">
+          "Si codeas con un framework nuevo y el código no compila, depura el
+          código y revisa la sintaxis antes de hacer un commit hacia GitHub."
+        </div>
+        <p class="section-text">
+          Si lo entiendes, bienvenido al grupo. Si no lo entiendes pero te
+          gustaría entenderlo, también eres bienvenido.
+        </p>
+        <p class="section-text">¿A qué esperas?</p>
+
+        <!-- Newsletter Form -->
+        <form
+          method="post"
+          action="https://listmonk.akidojo.dev/subscription/form"
+          class="listmonk-form"
+        >
+          <div class="newsletter-form-container">
+            <h3 class="newsletter-form-title">¡Únete a la newsletter!</h3>
+            <input type="hidden" name="nonce" />
+
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Correo electrónico"
+                class="form-input"
+              />
             </div>
-            <p class="section-text">
-                Si lo entiendes, bienvenido al grupo. Si no lo entiendes pero te gustaría entenderlo, también eres bienvenido.
-            </p>
-            <p class="section-text">¿A qué esperas?</p>
-            
-            <!-- Newsletter Form -->
-            <form method="post" action="https://listmonk.akidojo.dev/subscription/form" class="listmonk-form">
-                <div class="newsletter-form-container">
-                    <h3 class="newsletter-form-title">¡Únete a la newsletter!</h3>
-                    <input type="hidden" name="nonce" />
-                    
-                    <div class="form-group">
-                        <input type="email" name="email" required placeholder="Correo electrónico" class="form-input" />
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Nombre (opcional)" class="form-input" />
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input id="b4f01" type="checkbox" name="l" checked value="b4f01952-65a2-4460-92e7-c058ae2775de" class="form-checkbox" />
-                        <div class="checkbox-content">
-                            <label for="b4f01" class="checkbox-label">Newsletter gratuita</label>
-                            <span class="checkbox-description">Lista para la newsletter gratuita de AkiDev</span>
-                        </div>
-                    </div>
-                    
-                    <input type="submit" value="¡Me quiero unir ya!" class="form-submit" />
-                </div>
-            </form>
-        </section>
 
-        <!-- Section 2 -->
-        <section class="section fade-in">
-            <h2 class="section-title">Deja de estar solo y socializa de una vez</h2>
-            <p class="section-text">
-                Conocer a personas con tus mismos gustos a veces puede ser misión imposible. 
-                Te lo digo por experiencia.
-            </p>
-            <p class="section-text">
-                Yo al comenzar con esto del desarrollo web, estaba más solo que una trucha en tierra firme. 
-                Y es jodido, porque te sientes solo.
-            </p>
-            <p class="section-text">
-                Lo único que hay por internet son tutoriales de indios y vendehumos. 
-                Y no me gustaría que tú tuvieses que pasar por lo mismo.
-            </p>
-            <p class="section-text">
-                Por eso, he creado un <span class="highlight">Grupo de Telegram</span> de frontends para frontends 
-                con el fin de que no tengas que pasar por lo que pasé yo.
-            </p>
-            <p class="section-text">¿Te interesa?</p>
-            <a href="https://t.me/la_cueva_akidev" class="cta-button">¡Estoy harto de estar solo!</a>
-        </section>
+            <div class="form-group">
+              <input
+                type="text"
+                name="name"
+                placeholder="Nombre (opcional)"
+                class="form-input"
+              />
+            </div>
 
-        <!-- Section 3 -->
-        <section class="section fade-in">
-            <h2 class="section-title">Comienza con buen pie</h2>
-            <p class="section-text">
-                No malgastes el tiempo y obtén totalmente gratis una guía hecha por mí donde te explico 
-                desde mi experiencia cómo comenzar y los básicos dentro del mundo del frontend.
-            </p>
-            <p class="section-text">Sí, sí. <span class="highlight">Gratis.</span></p>
-            <p class="section-text">¿Lo quieres?</p>
-            <a href="guia-frontend/index.html" class="cta-button">¡Quiero mi ebook!</a>
-        </section>
+            <div class="checkbox-group">
+              <input
+                id="b4f01"
+                type="checkbox"
+                name="l"
+                checked
+                value="b4f01952-65a2-4460-92e7-c058ae2775de"
+                class="form-checkbox"
+              />
+              <div class="checkbox-content">
+                <label for="b4f01" class="checkbox-label"
+                  >Newsletter gratuita</label
+                >
+                <span class="checkbox-description"
+                  >Lista para la newsletter gratuita de AkiDev</span
+                >
+              </div>
+            </div>
+
+            <input
+              type="submit"
+              value="¡Me quiero unir ya!"
+              class="form-submit"
+            />
+          </div>
+        </form>
+      </section>
+
+      <section class="section fade-in">
+        <h2 class="section-title">Domina Git sin volverte loco</h2>
+        <p class="section-text">
+          Git puede parecer un laberinto al principio. Branches, commits, push,
+          pull... ¿qué es todo eso?
+        </p>
+        <p class="section-text">
+          Subí un vídeo sobre Git sin muchas expectativas… y petó. Más de 3500
+          vistas y un montón de gente dándome las gracias porque, al parecer,
+          les aclaró muchas dudas.
+        </p>
+        <p class="section-text">
+          Vi que la cosa gustó y, aunque mi cuenta va más de frontend, decidí
+          aprovechar el tirón y hacer algo útil: un
+          <span class="highlight">PDF totalmente gratis</span> con los comandos
+          de Git que realmente necesitas para trabajar sin agobios.
+        </p>
+        <p class="section-text">
+          Es directo, práctico y sin rodeos. Lo que me habría gustado tener
+          cuando empecé.
+        </p>
+        <p class="section-text">¿Te suena a chino esto?:</p>
+        <div class="code-block">
+          "git rebase origin/main && git push --force-with-lease"
+        </div>
+        <p class="section-text">
+          Si sabes lo que hace, genial. Si no lo sabes pero quieres entenderlo,
+          este PDF es para ti.
+        </p>
+        <p class="section-text">
+          Entra en mi newsletter y empieza a usar Git con cabeza.
+        </p>
+
+        <div
+          id="message"
+          style="
+            display: none;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+          "
+        ></div>
+
+        <!-- Tu formulario modificado -->
+        <form id="subscriptionForm" class="listmonk-form">
+          <div class="newsletter-form-container">
+            <h3 class="newsletter-form-title">Consigue el PDF</h3>
+            <input type="hidden" name="nonce" />
+
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                placeholder="Correo electrónico"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nombre (opcional)"
+                class="form-input"
+              />
+            </div>
+
+            <div class="checkbox-group">
+              <input
+                id="b4f01"
+                type="checkbox"
+                name="l"
+                checked
+                value="b4f01952-65a2-4460-92e7-c058ae2775de"
+                class="form-checkbox"
+              />
+              <div class="checkbox-content">
+                <label for="b4f01" class="checkbox-label"
+                  >PDF de comandos de git
+                </label>
+                <span class="checkbox-description"
+                  >Aprende de una vez como funciona git</span
+                >
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              id="submitBtn"
+              class="form-submit"
+              style="position: relative"
+            >
+              <span id="btnText">¡Quiero el PDF ya!</span>
+              <div
+                id="loading"
+                style="
+                  display: none;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                "
+              >
+                <div
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #ffffff;
+                    border-top: 2px solid transparent;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                  "
+                ></div>
+              </div>
+            </button>
+          </div>
+        </form>
+
+        <style>
+          /* Solo los estilos necesarios para la funcionalidad */
+          @keyframes spin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+
+          #message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+          }
+
+          #message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+          }
+        </style>
+
+        <script>
+          // Configuración - ¡CAMBIA ESTAS URLs!
+          const CONFIG = {
+            listmonkUrl: "https://listmonk.akidojo.dev",
+            redirectUrl: "https://docs.google.com/document/d/1qAbKZTl1TLP0iTGbut9BRhvkeiR2G_S7PpT5bki3egs/edit?usp=sharing", // Cambia por tu página de agradecimiento
+            redirectDelay: 1500, // Tiempo en ms antes de redirigir
+          };
+
+          document
+            .getElementById("subscriptionForm")
+            .addEventListener("submit", async function (e) {
+              e.preventDefault();
+
+              const submitBtn = document.getElementById("submitBtn");
+              const btnText = document.getElementById("btnText");
+              const loading = document.getElementById("loading");
+              const messageDiv = document.getElementById("message");
+
+              // Obtener datos del formulario
+              const formData = new FormData(this);
+              const email = formData.get("email");
+              const name = formData.get("name") || "";
+              const lists = formData.getAll("l");
+
+              // Validar email
+              if (!isValidEmail(email)) {
+                showMessage(
+                  "Por favor, ingresa un correo electrónico válido.",
+                  "error"
+                );
+                return;
+              }
+
+              // Validar que se haya seleccionado la lista
+              if (lists.length === 0) {
+                showMessage(
+                  "Por favor, marca la casilla para suscribirte.",
+                  "error"
+                );
+                return;
+              }
+
+              // Mostrar estado de carga
+              submitBtn.disabled = true;
+              btnText.style.opacity = "0";
+              loading.style.display = "block";
+              hideMessage();
+
+              try {
+                // Preparar FormData para Listmonk
+                const formDataToSend = new FormData();
+                formDataToSend.append("email", email);
+                formDataToSend.append("name", name);
+                lists.forEach((listId) => {
+                  formDataToSend.append("l", listId);
+                });
+
+                // Enviar a Listmonk
+                const response = await fetch(
+                  `${CONFIG.listmonkUrl}/subscription/form`,
+                  {
+                    method: "POST",
+                    body: formDataToSend,
+                  }
+                );
+
+                if (response.ok) {
+                  showMessage(
+                    "¡Perfecto! Te has suscrito correctamente. Redirigiendo...",
+                    "success"
+                  );
+                  setTimeout(() => {
+                    window.location.href = CONFIG.redirectUrl;
+                  }, CONFIG.redirectDelay);
+                } else {
+                  await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: formDataToSend,
+                  });
+
+                  showMessage(
+                    "¡Listo! Tu suscripción ha sido procesada. Redirigiendo...",
+                    "success"
+                  );
+                  setTimeout(() => {
+                    window.location.href = CONFIG.redirectUrl;
+                  }, CONFIG.redirectDelay);
+                }
+              } catch (error) {
+                console.error("Error:", error);
+
+                // Último intento con no-cors
+                try {
+                  const finalFormData = new FormData();
+                  finalFormData.append("email", email);
+                  finalFormData.append("name", name);
+                  lists.forEach((listId) => {
+                    finalFormData.append("l", listId);
+                  });
+
+                  await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: finalFormData,
+                  });
+
+                  showMessage(
+                    "¡Excelente! Tu suscripción ha sido enviada. Redirigiendo...",
+                    "success"
+                  );
+                  setTimeout(() => {
+                    window.location.href = CONFIG.redirectUrl;
+                  }, CONFIG.redirectDelay);
+                } catch (finalError) {
+                  console.error("Error final:", finalError);
+                  showMessage(
+                    "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
+                    "error"
+                  );
+                }
+              } finally {
+                submitBtn.disabled = false;
+                btnText.style.opacity = "1";
+                loading.style.display = "none";
+              }
+            });
+
+          function isValidEmail(email) {
+            // Expresión regular simple para validar emails
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+          }
+
+          function showMessage(text, type) {
+            const messageDiv = document.getElementById("message");
+            messageDiv.textContent = text;
+            messageDiv.className = type;
+            messageDiv.style.display = "block";
+            messageDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+
+          function hideMessage() {
+            document.getElementById("message").style.display = "none";
+          }
+        </script>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="section fade-in">
+        <h2 class="section-title">Comienza con buen pie</h2>
+        <p class="section-text">
+          No malgastes el tiempo y obtén totalmente gratis una guía hecha por mí
+          donde te explico desde mi experiencia cómo comenzar y los básicos
+          dentro del mundo del frontend.
+        </p>
+        <p class="section-text">
+          Sí, sí. <span class="highlight">Gratis.</span>
+        </p>
+        <p class="section-text">¿Lo quieres?</p>
+        <a href="guia-frontend/index.html" class="cta-button"
+          >¡Quiero mi ebook!</a
+        >
+      </section>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Página Web producida por AkiDev en el escritorio de su casa.</p>
-        <p><a href="https://github.com/Electrum10/LinkTree-Casero-AkiDev">Link al repositorio</a></p>
-        <p id="fecha"></p>
+      <p>Página Web producida por AkiDev en el escritorio de su casa.</p>
+      <p>
+        <a href="https://github.com/Electrum10/LinkTree-Casero-AkiDev"
+          >Link al repositorio</a
+        >
+      </p>
+      <p id="fecha"></p>
     </footer>
 
     <script>
-        // Crear figuras geométricas animadas
-        function createGeometricShapes() {
-            const background = document.getElementById('animatedBg');
-            const shapes = ['circle', 'square', 'triangle', 'hexagon'];
-            const colors = [
-                'rgba(74, 144, 226, 0.3)',
-                'rgba(255, 255, 255, 0.2)',
-                'rgba(107, 182, 255, 0.25)',
-                'rgba(42, 63, 77, 0.4)'
-            ];
+      // Crear figuras geométricas animadas
+      function createGeometricShapes() {
+        const background = document.getElementById("animatedBg");
+        const shapes = ["circle", "square", "triangle", "hexagon"];
+        const colors = [
+          "rgba(74, 144, 226, 0.3)",
+          "rgba(255, 255, 255, 0.2)",
+          "rgba(107, 182, 255, 0.25)",
+          "rgba(42, 63, 77, 0.4)",
+        ];
 
-            function createShape() {
-                const shape = document.createElement('div');
-                const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
-                const size = Math.random() * 60 + 20;
-                
-                shape.className = `geometric-shape shape-${shapeType}`;
-                
-                if (shapeType === 'circle' || shapeType === 'square') {
-                    shape.style.width = size + 'px';
-                    shape.style.height = size + 'px';
-                    if (shapeType === 'circle') {
-                        shape.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    }
-                }
-                
-                // Posición inicial aleatoria
-                shape.style.left = Math.random() * window.innerWidth + 'px';
-                shape.style.animationDuration = (Math.random() * 15 + 10) + 's';
-                shape.style.animationDelay = Math.random() * 5 + 's';
-                
-                // Algunas figuras van en dirección contraria
-                if (Math.random() > 0.5) {
-                    shape.style.animationName = 'float-geometric-reverse';
-                }
-                
-                // Algunas figuras tienen animación de pulso
-                if (Math.random() > 0.7) {
-                    shape.style.animation += ', pulse-gentle 4s infinite';
-                }
-                
-                background.appendChild(shape);
-                
-                // Eliminar la figura después de la animación
-                setTimeout(() => {
-                    if (shape.parentNode) {
-                        shape.parentNode.removeChild(shape);
-                    }
-                }, 25000);
-            }
+        function createShape() {
+          const shape = document.createElement("div");
+          const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+          const size = Math.random() * 60 + 20;
 
-            // Crear figuras periódicamente
-            setInterval(createShape, 1500);
-            
-            // Crear algunas figuras iniciales
-            for (let i = 0; i < 8; i++) {
-                setTimeout(createShape, i * 800);
+          shape.className = `geometric-shape shape-${shapeType}`;
+
+          if (shapeType === "circle" || shapeType === "square") {
+            shape.style.width = size + "px";
+            shape.style.height = size + "px";
+            if (shapeType === "circle") {
+              shape.style.background =
+                colors[Math.floor(Math.random() * colors.length)];
             }
+          }
+
+          // Posición inicial aleatoria
+          shape.style.left = Math.random() * window.innerWidth + "px";
+          shape.style.animationDuration = Math.random() * 15 + 10 + "s";
+          shape.style.animationDelay = Math.random() * 5 + "s";
+
+          // Algunas figuras van en dirección contraria
+          if (Math.random() > 0.5) {
+            shape.style.animationName = "float-geometric-reverse";
+          }
+
+          // Algunas figuras tienen animación de pulso
+          if (Math.random() > 0.7) {
+            shape.style.animation += ", pulse-gentle 4s infinite";
+          }
+
+          background.appendChild(shape);
+
+          // Eliminar la figura después de la animación
+          setTimeout(() => {
+            if (shape.parentNode) {
+              shape.parentNode.removeChild(shape);
+            }
+          }, 25000);
         }
 
-        // Intersection Observer para animaciones al hacer scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Crear figuras periódicamente
+        setInterval(createShape, 1500);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        // Crear algunas figuras iniciales
+        for (let i = 0; i < 8; i++) {
+          setTimeout(createShape, i * 800);
+        }
+      }
+
+      // Intersection Observer para animaciones al hacer scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observar todos los elementos con clase fade-in
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Inicializar cuando cargue la página
+      document.addEventListener("DOMContentLoaded", () => {
+        createGeometricShapes();
+      });
+
+      // Fecha actual en el footer
+      document.getElementById("fecha").textContent = new Date().getFullYear();
+
+      // Smooth scrolling mejorado para los botones
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
-        }, observerOptions);
-
-        // Observar todos los elementos con clase fade-in
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+          }
         });
-
-        // Inicializar cuando cargue la página
-        document.addEventListener('DOMContentLoaded', () => {
-            createGeometricShapes();
-        });
-
-        // Fecha actual en el footer
-        document.getElementById('fecha').textContent = new Date().getFullYear();
-
-        // Smooth scrolling mejorado para los botones
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
