@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <style>
+      /* ===== RESET Y VARIABLES ===== */
       * {
         margin: 0;
         padding: 0;
@@ -43,7 +44,113 @@
         position: relative;
       }
 
-      /* Fondo animado con figuras geométricas */
+      /* ===== ANIMACIONES ===== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes glow {
+        0%, 100% {
+          box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
+        }
+      }
+
+      @keyframes float-geometric {
+        0% {
+          transform: translateY(100vh) translateX(-100px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.3;
+        }
+        90% {
+          opacity: 0.3;
+        }
+        100% {
+          transform: translateY(-100px) translateX(100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes float-geometric-reverse {
+        0% {
+          transform: translateY(-100px) translateX(100px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.25;
+        }
+        90% {
+          opacity: 0.25;
+        }
+        100% {
+          transform: translateY(100vh) translateX(-100px) rotate(-360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulse-gentle {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.4;
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ===== FONDO ANIMADO ===== */
       .animated-background {
         position: fixed;
         top: 0;
@@ -66,11 +173,7 @@
       }
 
       .shape-square {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.1),
-          transparent
-        );
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
         transform: rotate(45deg);
       }
 
@@ -110,114 +213,14 @@
         border-top: 17.32px solid rgba(255, 255, 255, 0.05);
       }
 
-      @keyframes float-geometric {
-        0% {
-          transform: translateY(100vh) translateX(-100px) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.3;
-        }
-        90% {
-          opacity: 0.3;
-        }
-        100% {
-          transform: translateY(-100px) translateX(100px) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      @keyframes float-geometric-reverse {
-        0% {
-          transform: translateY(-100px) translateX(100px) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.25;
-        }
-        90% {
-          opacity: 0.25;
-        }
-        100% {
-          transform: translateY(100vh) translateX(-100px) rotate(-360deg);
-          opacity: 0;
-        }
-      }
-
-      @keyframes pulse-gentle {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.2;
-        }
-        50% {
-          transform: scale(1.1);
-          opacity: 0.4;
-        }
-      }
-
-      /* Animaciones */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-        }
-      }
-
-      /* Container principal */
+      /* ===== LAYOUT PRINCIPAL ===== */
       .container {
         max-width: 800px;
         margin: 0 auto;
         padding: 2rem 1rem;
       }
 
-      /* Header */
+      /* ===== HEADER ===== */
       .header {
         text-align: center;
         padding: 4rem 0;
@@ -234,10 +237,10 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        animation: scaleIn 0.8s ease-out 0.3s both,
-          float 3s ease-in-out infinite 2s;
+        animation: scaleIn 0.8s ease-out 0.3s both, float 3s ease-in-out infinite 2s;
         box-shadow: var(--shadow);
       }
+
       .logo img {
         width: 100%;
         height: 100%;
@@ -250,11 +253,7 @@
         font-size: clamp(2.5rem, 5vw, 4rem);
         font-weight: 700;
         margin-bottom: 1rem;
-        background: linear-gradient(
-          135deg,
-          var(--text-light),
-          var(--accent-color)
-        );
+        background: linear-gradient(135deg, var(--text-light), var(--accent-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -269,7 +268,7 @@
         animation: fadeInUp 1s ease-out 0.7s both;
       }
 
-      /* Social Links */
+      /* ===== ENLACES SOCIALES ===== */
       .social-links {
         display: flex;
         justify-content: center;
@@ -299,7 +298,7 @@
         animation: glow 2s infinite;
       }
 
-      /* Sections */
+      /* ===== SECCIONES ===== */
       .section {
         background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(10px);
@@ -336,7 +335,19 @@
         font-weight: 600;
       }
 
-      /* Newsletter Form Styles */
+      .code-block {
+        background: var(--primary-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        color: var(--text-light);
+        border-left: 4px solid var(--accent-color);
+        overflow-x: auto;
+      }
+
+      /* ===== FORMULARIOS ===== */
       .listmonk-form {
         margin-top: 2rem;
       }
@@ -362,11 +373,7 @@
         color: var(--text-light);
         margin-bottom: 1.5rem;
         text-align: center;
-        background: linear-gradient(
-          135deg,
-          var(--text-light),
-          var(--accent-color)
-        );
+        background: linear-gradient(135deg, var(--text-light), var(--accent-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -436,8 +443,10 @@
         line-height: 1.5;
       }
 
-      .form-submit {
-        width: 100%;
+      /* ===== BOTONES ===== */
+      .form-submit,
+      .cta-button {
+        display: inline-block;
         background: linear-gradient(135deg, var(--accent-color), #6bb6ff);
         color: var(--white);
         padding: 1.2rem 2rem;
@@ -449,59 +458,71 @@
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-      }
-
-      .form-submit:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
-        animation: glow 2s infinite;
-      }
-
-      .form-submit:active {
-        transform: translateY(-1px);
-      }
-
-      /* Buttons */
-      .cta-button {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--accent-color), #6bb6ff);
-        color: var(--white);
-        padding: 1rem 2.5rem;
-        border-radius: var(--border-radius);
         text-decoration: none;
-        font-weight: 600;
-        font-size: clamp(1.1rem, 2.8vw, 1.3rem);
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+      }
+
+      .form-submit {
+        width: 100%;
+        position: relative;
+      }
+
+      .cta-button {
+        padding: 1rem 2.5rem;
         margin-top: 1rem;
       }
 
+      .form-submit:hover,
       .cta-button:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
         animation: glow 2s infinite;
       }
 
+      .form-submit:active,
       .cta-button:active {
         transform: translateY(-1px);
       }
 
-      /* Code block */
-      .code-block {
-        background: var(--primary-color);
+      /* ===== MENSAJES Y ESTADOS ===== */
+      #message {
+        display: none;
+        padding: 15px;
         border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-        font-family: "Courier New", monospace;
-        font-size: 0.9rem;
-        color: var(--text-light);
-        border-left: 4px solid var(--accent-color);
-        overflow-x: auto;
+        margin-bottom: 20px;
+        font-weight: 600;
+        text-align: center;
       }
 
-      /* Footer */
+      #message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      #message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      #loading {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .loading-spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ffffff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      /* ===== FOOTER ===== */
       .footer {
         text-align: center;
         padding: 3rem 0 2rem;
@@ -521,7 +542,19 @@
         color: var(--text-light);
       }
 
-      /* Responsive Design */
+      /* ===== ANIMACIONES DE INTERSECTION OBSERVER ===== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== RESPONSIVE DESIGN ===== */
       @media (max-width: 768px) {
         .container {
           padding: 1rem 0.5rem;
@@ -570,18 +603,6 @@
           gap: 0.5rem;
         }
       }
-
-      /* Intersection Observer animations */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
     </style>
   </head>
 
@@ -592,40 +613,48 @@
     <div class="container">
       <!-- Header -->
       <header class="header">
-        <div class="logo"><img src="src/Logo.webp" alt="" /></div>
+        <div class="logo">
+          <img src="src/Logo.webp" alt="AkiDev Logo" />
+        </div>
         <h1 class="main-title">AkiDev</h1>
         <p class="subtitle">Te enseño Frontend sin tonterías</p>
       </header>
 
-      <!-- Section 1 -->
+      <!-- Sección 1: Newsletter Principal -->
       <section class="section fade-in">
         <h2 class="section-title">Optimiza tu tiempo y trabaja con cabeza</h2>
+        
         <p class="section-text">
-          El frontend es un campo muy grande en el que fácilmente te puedes
-          perder. Lleno de tecnicismos y palabras raras (muy raras).
+          El frontend es un campo muy grande en el que fácilmente te puedes perder. 
+          Lleno de tecnicismos y palabras raras (muy raras).
         </p>
+        
         <p class="section-text">
-          Si no tienes a alguien con quien absorber ese conocimiento,
-          malgastarás una de tiempo que te gustaría tener.
+          Si no tienes a alguien con quien absorber ese conocimiento, malgastarás 
+          una de tiempo que te gustaría tener.
         </p>
+        
         <p class="section-text">
-          Por eso, he creado una
-          <span class="highlight">membresía totalmente gratis</span> donde
-          comparto trucos y consejos basados en mi experiencia para que puedas
+          Por eso, he creado una <span class="highlight">membresía totalmente gratis</span> 
+          donde comparto trucos y consejos basados en mi experiencia para que puedas 
           aprender más en menos tiempo.
         </p>
+        
         <p class="section-text">¿Acaso entiendes esto?:</p>
+        
         <div class="code-block">
-          "Si codeas con un framework nuevo y el código no compila, depura el
-          código y revisa la sintaxis antes de hacer un commit hacia GitHub."
+          "Si codeas con un framework nuevo y el código no compila, depura el código 
+          y revisa la sintaxis antes de hacer un commit hacia GitHub."
         </div>
+        
         <p class="section-text">
-          Si lo entiendes, bienvenido al grupo. Si no lo entiendes pero te
-          gustaría entenderlo, también eres bienvenido.
+          Si lo entiendes, bienvenido al grupo. Si no lo entiendes pero te gustaría 
+          entenderlo, también eres bienvenido.
         </p>
+        
         <p class="section-text">¿A qué esperas?</p>
 
-        <!-- Newsletter Form -->
+        <!-- Formulario Newsletter Principal -->
         <form
           method="post"
           action="https://listmonk.akidojo.dev/subscription/form"
@@ -656,7 +685,7 @@
 
             <div class="checkbox-group">
               <input
-                id="b4f01"
+                id="newsletter-main"
                 type="checkbox"
                 name="l"
                 checked
@@ -664,12 +693,12 @@
                 class="form-checkbox"
               />
               <div class="checkbox-content">
-                <label for="b4f01" class="checkbox-label"
-                  >Newsletter gratuita</label
-                >
-                <span class="checkbox-description"
-                  >Lista para la newsletter gratuita de AkiDev</span
-                >
+                <label for="newsletter-main" class="checkbox-label">
+                  Newsletter gratuita
+                </label>
+                <span class="checkbox-description">
+                  Lista para la newsletter gratuita de AkiDev
+                </span>
               </div>
             </div>
 
@@ -682,52 +711,49 @@
         </form>
       </section>
 
+      <!-- Sección 2: PDF de Git -->
       <section class="section fade-in">
         <h2 class="section-title">Domina Git sin volverte loco</h2>
+        
         <p class="section-text">
-          Git puede parecer un laberinto al principio. Branches, commits, push,
-          pull... ¿qué es todo eso?
+          Git puede parecer un laberinto al principio. Branches, commits, push, pull... 
+          ¿qué es todo eso?
         </p>
+        
         <p class="section-text">
-          Subí un vídeo sobre Git sin muchas expectativas… y petó. Más de 3500
-          vistas y un montón de gente dándome las gracias porque, al parecer,
-          les aclaró muchas dudas.
+          Subí un vídeo sobre Git sin muchas expectativas… y petó. Más de 3500 vistas 
+          y un montón de gente dándome las gracias porque, al parecer, les aclaró muchas dudas.
         </p>
+        
         <p class="section-text">
-          Vi que la cosa gustó y, aunque mi cuenta va más de frontend, decidí
-          aprovechar el tirón y hacer algo útil: un
-          <span class="highlight">PDF totalmente gratis</span> con los comandos
-          de Git que realmente necesitas para trabajar sin agobios.
+          Vi que la cosa gustó y, aunque mi cuenta va más de frontend, decidí aprovechar 
+          el tirón y hacer algo útil: un <span class="highlight">PDF totalmente gratis</span> 
+          con los comandos de Git que realmente necesitas para trabajar sin agobios.
         </p>
+        
         <p class="section-text">
-          Es directo, práctico y sin rodeos. Lo que me habría gustado tener
-          cuando empecé.
+          Es directo, práctico y sin rodeos. Lo que me habría gustado tener cuando empecé.
         </p>
+        
         <p class="section-text">¿Te suena a chino esto?:</p>
+        
         <div class="code-block">
           "git rebase origin/main && git push --force-with-lease"
         </div>
+        
         <p class="section-text">
-          Si sabes lo que hace, genial. Si no lo sabes pero quieres entenderlo,
+          Si sabes lo que hace, genial. Si no lo sabes pero quieres entenderlo, 
           este PDF es para ti.
         </p>
+        
         <p class="section-text">
           Entra en mi newsletter y empieza a usar Git con cabeza.
         </p>
 
-        <div
-          id="message"
-          style="
-            display: none;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-align: center;
-          "
-        ></div>
+        <!-- Mensaje de estado -->
+        <div id="message"></div>
 
-        <!-- Tu formulario modificado -->
+        <!-- Formulario PDF Git -->
         <form id="subscriptionForm" class="listmonk-form">
           <div class="newsletter-form-container">
             <h3 class="newsletter-form-title">Consigue el PDF</h3>
@@ -756,7 +782,7 @@
 
             <div class="checkbox-group">
               <input
-                id="b4f01"
+                id="pdf-git"
                 type="checkbox"
                 name="l"
                 checked
@@ -764,234 +790,44 @@
                 class="form-checkbox"
               />
               <div class="checkbox-content">
-                <label for="b4f01" class="checkbox-label"
-                  >PDF de comandos de git
+                <label for="pdf-git" class="checkbox-label">
+                  PDF de comandos de git
                 </label>
-                <span class="checkbox-description"
-                  >Aprende de una vez como funciona git</span
-                >
+                <span class="checkbox-description">
+                  Aprende de una vez como funciona git
+                </span>
               </div>
             </div>
 
-            <button
-              type="submit"
-              id="submitBtn"
-              class="form-submit"
-              style="position: relative"
-            >
+            <button type="submit" id="submitBtn" class="form-submit">
               <span id="btnText">¡Quiero el PDF ya!</span>
-              <div
-                id="loading"
-                style="
-                  display: none;
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                "
-              >
-                <div
-                  style="
-                    width: 20px;
-                    height: 20px;
-                    border: 2px solid #ffffff;
-                    border-top: 2px solid transparent;
-                    border-radius: 50%;
-                    animation: spin 1s linear infinite;
-                  "
-                ></div>
+              <div id="loading">
+                <div class="loading-spinner"></div>
               </div>
             </button>
           </div>
         </form>
-
-        <style>
-          /* Solo los estilos necesarios para la funcionalidad */
-          @keyframes spin {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-
-          #message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-          }
-
-          #message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-          }
-        </style>
-
-        <script>
-          // Configuración - ¡CAMBIA ESTAS URLs!
-          const CONFIG = {
-            listmonkUrl: "https://listmonk.akidojo.dev",
-            redirectUrl: "https://docs.google.com/document/d/1qAbKZTl1TLP0iTGbut9BRhvkeiR2G_S7PpT5bki3egs/edit?usp=sharing", // Cambia por tu página de agradecimiento
-            redirectDelay: 1500, // Tiempo en ms antes de redirigir
-          };
-
-          document
-            .getElementById("subscriptionForm")
-            .addEventListener("submit", async function (e) {
-              e.preventDefault();
-
-              const submitBtn = document.getElementById("submitBtn");
-              const btnText = document.getElementById("btnText");
-              const loading = document.getElementById("loading");
-              const messageDiv = document.getElementById("message");
-
-              // Obtener datos del formulario
-              const formData = new FormData(this);
-              const email = formData.get("email");
-              const name = formData.get("name") || "";
-              const lists = formData.getAll("l");
-
-              // Validar email
-              if (!isValidEmail(email)) {
-                showMessage(
-                  "Por favor, ingresa un correo electrónico válido.",
-                  "error"
-                );
-                return;
-              }
-
-              // Validar que se haya seleccionado la lista
-              if (lists.length === 0) {
-                showMessage(
-                  "Por favor, marca la casilla para suscribirte.",
-                  "error"
-                );
-                return;
-              }
-
-              // Mostrar estado de carga
-              submitBtn.disabled = true;
-              btnText.style.opacity = "0";
-              loading.style.display = "block";
-              hideMessage();
-
-              try {
-                // Preparar FormData para Listmonk
-                const formDataToSend = new FormData();
-                formDataToSend.append("email", email);
-                formDataToSend.append("name", name);
-                lists.forEach((listId) => {
-                  formDataToSend.append("l", listId);
-                });
-
-                // Enviar a Listmonk
-                const response = await fetch(
-                  `${CONFIG.listmonkUrl}/subscription/form`,
-                  {
-                    method: "POST",
-                    body: formDataToSend,
-                  }
-                );
-
-                if (response.ok) {
-                  showMessage(
-                    "¡Perfecto! Te has suscrito correctamente. Redirigiendo...",
-                    "success"
-                  );
-                  setTimeout(() => {
-                    window.location.href = CONFIG.redirectUrl;
-                  }, CONFIG.redirectDelay);
-                } else {
-                  await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
-                    method: "POST",
-                    mode: "no-cors",
-                    body: formDataToSend,
-                  });
-
-                  showMessage(
-                    "¡Listo! Tu suscripción ha sido procesada. Redirigiendo...",
-                    "success"
-                  );
-                  setTimeout(() => {
-                    window.location.href = CONFIG.redirectUrl;
-                  }, CONFIG.redirectDelay);
-                }
-              } catch (error) {
-                console.error("Error:", error);
-
-                // Último intento con no-cors
-                try {
-                  const finalFormData = new FormData();
-                  finalFormData.append("email", email);
-                  finalFormData.append("name", name);
-                  lists.forEach((listId) => {
-                    finalFormData.append("l", listId);
-                  });
-
-                  await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
-                    method: "POST",
-                    mode: "no-cors",
-                    body: finalFormData,
-                  });
-
-                  showMessage(
-                    "¡Excelente! Tu suscripción ha sido enviada. Redirigiendo...",
-                    "success"
-                  );
-                  setTimeout(() => {
-                    window.location.href = CONFIG.redirectUrl;
-                  }, CONFIG.redirectDelay);
-                } catch (finalError) {
-                  console.error("Error final:", finalError);
-                  showMessage(
-                    "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
-                    "error"
-                  );
-                }
-              } finally {
-                submitBtn.disabled = false;
-                btnText.style.opacity = "1";
-                loading.style.display = "none";
-              }
-            });
-
-          function isValidEmail(email) {
-            // Expresión regular simple para validar emails
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-          }
-
-          function showMessage(text, type) {
-            const messageDiv = document.getElementById("message");
-            messageDiv.textContent = text;
-            messageDiv.className = type;
-            messageDiv.style.display = "block";
-            messageDiv.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-
-          function hideMessage() {
-            document.getElementById("message").style.display = "none";
-          }
-        </script>
       </section>
 
-      <!-- Section 2 -->
+      <!-- Sección 3: Ebook -->
       <section class="section fade-in">
         <h2 class="section-title">Comienza con buen pie</h2>
+        
         <p class="section-text">
-          No malgastes el tiempo y obtén totalmente gratis una guía hecha por mí
-          donde te explico desde mi experiencia cómo comenzar y los básicos
-          dentro del mundo del frontend.
+          No malgastes el tiempo y obtén totalmente gratis una guía hecha por mí 
+          donde te explico desde mi experiencia cómo comenzar y los básicos dentro 
+          del mundo del frontend.
         </p>
+        
         <p class="section-text">
           Sí, sí. <span class="highlight">Gratis.</span>
         </p>
+        
         <p class="section-text">¿Lo quieres?</p>
-        <a href="guia-frontend/index.html" class="cta-button"
-          >¡Quiero mi ebook!</a
-        >
+        
+        <a href="guia-frontend/index.html" class="cta-button">
+          ¡Quiero mi ebook!
+        </a>
       </section>
     </div>
 
@@ -999,42 +835,202 @@
     <footer class="footer">
       <p>Página Web producida por AkiDev en el escritorio de su casa.</p>
       <p>
-        <a href="https://github.com/Electrum10/LinkTree-Casero-AkiDev"
-          >Link al repositorio</a
-        >
+        <a href="https://github.com/Electrum10/LinkTree-Casero-AkiDev">
+          Link al repositorio
+        </a>
       </p>
       <p id="fecha"></p>
     </footer>
 
     <script>
-      // Crear figuras geométricas animadas
-      function createGeometricShapes() {
-        const background = document.getElementById("animatedBg");
-        const shapes = ["circle", "square", "triangle", "hexagon"];
-        const colors = [
+      // ===== CONFIGURACIÓN =====
+      const CONFIG = {
+        listmonkUrl: "https://listmonk.akidojo.dev",
+        redirectUrl: "https://docs.google.com/document/d/1qAbKZTl1TLP0iTGbut9BRhvkeiR2G_S7PpT5bki3egs/edit?usp=sharing",
+        webhookUrl: "https://n8n.bichear.com/webhook/pruebas",
+        redirectDelay: 1500,
+        // Configuración del fondo animado
+        shapes: ["circle", "square", "triangle", "hexagon"],
+        colors: [
           "rgba(74, 144, 226, 0.3)",
           "rgba(255, 255, 255, 0.2)",
           "rgba(107, 182, 255, 0.25)",
           "rgba(42, 63, 77, 0.4)",
-        ];
+        ],
+        shapeInterval: 1500,
+        initialShapes: 8,
+        shapeLifetime: 25000
+      };
 
-        function createShape() {
-          const shape = document.createElement("div");
-          const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+      // ===== UTILIDADES =====
+      const Utils = {
+        isValidEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(email);
+        },
+
+        showMessage(text, type) {
+          const messageDiv = document.getElementById("message");
+          messageDiv.textContent = text;
+          messageDiv.className = type;
+          messageDiv.style.display = "block";
+          messageDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+        },
+
+        hideMessage() {
+          document.getElementById("message").style.display = "none";
+        },
+
+        setLoadingState(isLoading) {
+          const submitBtn = document.getElementById("submitBtn");
+          const btnText = document.getElementById("btnText");
+          const loading = document.getElementById("loading");
+
+          submitBtn.disabled = isLoading;
+          btnText.style.opacity = isLoading ? "0" : "1";
+          loading.style.display = isLoading ? "block" : "none";
+        }
+      };
+
+      // ===== MANEJO DE FORMULARIOS =====
+      const FormHandler = {
+        async submitForm(formData) {
+          try {
+            const response = await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
+              method: "POST",
+              body: formData,
+            });
+
+            if (response.ok) {
+              return { success: true };
+            } else {
+              // Intento con no-cors como fallback
+              await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData,
+              });
+              return { success: true };
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            
+            // Último intento con no-cors
+            try {
+              await fetch(`${CONFIG.listmonkUrl}/subscription/form`, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData,
+              });
+              return { success: true };
+            } catch (finalError) {
+              console.error("Error final:", finalError);
+              return { success: false, error: finalError };
+            }
+          }
+        },
+
+        async sendWebhook(email, name) {
+          try {
+            const webhookData = {
+              email: email,
+              name: name || "",
+              type: "pdf_git_subscription",
+              timestamp: new Date().toISOString(),
+              source: "akidev_website"
+            };
+
+            const response = await fetch(CONFIG.webhookUrl, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(webhookData),
+            });
+
+            console.log("Webhook enviado:", response.ok ? "✅ Éxito" : "❌ Error");
+            return response.ok;
+          } catch (error) {
+            console.error("Error enviando webhook:", error);
+            return false;
+          }
+        },
+
+        validateForm(email, lists) {
+          if (!Utils.isValidEmail(email)) {
+            Utils.showMessage("Por favor, ingresa un correo electrónico válido.", "error");
+            return false;
+          }
+
+          if (lists.length === 0) {
+            Utils.showMessage("Por favor, marca la casilla para suscribirte.", "error");
+            return false;
+          }
+
+          return true;
+        },
+
+        async handleSubmission(e) {
+          e.preventDefault();
+
+          const formData = new FormData(e.target);
+          const email = formData.get("email");
+          const name = formData.get("name") || "";
+          const lists = formData.getAll("l");
+
+          if (!this.validateForm(email, lists)) return;
+
+          Utils.setLoadingState(true);
+          Utils.hideMessage();
+
+          // Preparar FormData para Listmonk
+          const formDataToSend = new FormData();
+          formDataToSend.append("email", email);
+          formDataToSend.append("name", name);
+          lists.forEach((listId) => {
+            formDataToSend.append("l", listId);
+          });
+
+          const result = await this.submitForm(formDataToSend);
+
+          if (result.success) {
+            Utils.showMessage("¡Perfecto! Te has suscrito correctamente. Redirigiendo...", "success");
+            
+            // Enviar webhook a n8n (solo para el formulario del PDF de Git)
+            if (e.target.id === "subscriptionForm") {
+              await this.sendWebhook(email, name);
+            }
+            
+            setTimeout(() => {
+              window.location.href = CONFIG.redirectUrl;
+            }, CONFIG.redirectDelay);
+          } else {
+            Utils.showMessage("Ha ocurrido un error. Por favor, inténtalo de nuevo.", "error");
+          }
+
+          Utils.setLoadingState(false);
+        }
+      };
+
+      // ===== FONDO ANIMADO =====
+      const BackgroundAnimation = {
+        createShape() {
+          const background = document.getElementById("animatedBg");
+          const shapeType = CONFIG.shapes[Math.floor(Math.random() * CONFIG.shapes.length)];
           const size = Math.random() * 60 + 20;
 
+          const shape = document.createElement("div");
           shape.className = `geometric-shape shape-${shapeType}`;
 
           if (shapeType === "circle" || shapeType === "square") {
             shape.style.width = size + "px";
             shape.style.height = size + "px";
             if (shapeType === "circle") {
-              shape.style.background =
-                colors[Math.floor(Math.random() * colors.length)];
+              shape.style.background = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
             }
           }
 
-          // Posición inicial aleatoria
+          // Configurar animación
           shape.style.left = Math.random() * window.innerWidth + "px";
           shape.style.animationDuration = Math.random() * 15 + 10 + "s";
           shape.style.animationDelay = Math.random() * 5 + "s";
@@ -1056,57 +1052,86 @@
             if (shape.parentNode) {
               shape.parentNode.removeChild(shape);
             }
-          }, 25000);
+          }, CONFIG.shapeLifetime);
+        },
+
+        init() {
+          // Crear figuras periódicamente
+          setInterval(() => this.createShape(), CONFIG.shapeInterval);
+
+          // Crear algunas figuras iniciales
+          for (let i = 0; i < CONFIG.initialShapes; i++) {
+            setTimeout(() => this.createShape(), i * 800);
+          }
         }
-
-        // Crear figuras periódicamente
-        setInterval(createShape, 1500);
-
-        // Crear algunas figuras iniciales
-        for (let i = 0; i < 8; i++) {
-          setTimeout(createShape, i * 800);
-        }
-      }
-
-      // Intersection Observer para animaciones al hacer scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
       };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
+      // ===== INTERSECTION OBSERVER =====
+      const ScrollAnimations = {
+        init() {
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          };
 
-      // Observar todos los elementos con clase fade-in
-      document.querySelectorAll(".fade-in").forEach((el) => {
-        observer.observe(el);
-      });
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          }, observerOptions);
+
+          // Observar todos los elementos con clase fade-in
+          document.querySelectorAll(".fade-in").forEach((el) => {
+            observer.observe(el);
+          });
+        }
+      };
+
+      // ===== SMOOTH SCROLLING =====
+      const SmoothScroll = {
+        init() {
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+              e.preventDefault();
+              const target = document.querySelector(this.getAttribute("href"));
+              if (target) {
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            });
+          });
+        }
+      };
+
+      // ===== INICIALIZACIÓN =====
+      const App = {
+        init() {
+          this.setCurrentYear();
+          this.bindEvents();
+          BackgroundAnimation.init();
+          ScrollAnimations.init();
+          SmoothScroll.init();
+        },
+
+        setCurrentYear() {
+          document.getElementById("fecha").textContent = new Date().getFullYear();
+        },
+
+        bindEvents() {
+          const subscriptionForm = document.getElementById("subscriptionForm");
+          if (subscriptionForm) {
+            subscriptionForm.addEventListener("submit", (e) => FormHandler.handleSubmission(e));
+          }
+        }
+      };
 
       // Inicializar cuando cargue la página
       document.addEventListener("DOMContentLoaded", () => {
-        createGeometricShapes();
-      });
-
-      // Fecha actual en el footer
-      document.getElementById("fecha").textContent = new Date().getFullYear();
-
-      // Smooth scrolling mejorado para los botones
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
+        App.init();
       });
     </script>
   </body>
