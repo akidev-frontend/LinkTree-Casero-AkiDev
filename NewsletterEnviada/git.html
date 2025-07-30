@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo va bien - La Cueva de AkiDev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #1B2A33;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    p {
+      max-width: 600px;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    .btn {
+      background-color: #ffffff10;
+      border: 1px solid #ffffff33;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn:hover {
+      background-color: #ffffff22;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Si estás viendo esto, todo va bien</h1>
+  <p>
+    Tu email ha aterrizado sano y salvo en <strong>La Cueva de AkiDev</strong>… pero aún no estás dentro.  
+    <br><br>
+    Te falta un paso: abre el correo que te acabo de enviar y confirma tu subscripción.
+   <strong> Si no lo haces, por ley, no puedo enviarte nada </strong> (ni aunque me lo pidas llorando).
+    <br><br>
+    Revisa también el <em>spam</em>, <em>promociones</em> o esa carpeta rara donde van los correos que da pereza abrir.
+    <br><br>
+    Haz clic. Y ya serás oficialmente parte de los que afinan el hacha en esta cueva digital.
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="https://mail.google.com" target="_blank">Ir a Gmail</a>
+    <a class="btn" href="https://outlook.live.com" target="_blank">Ir a Hotmail / Outlook</a>
+    <a class="btn" href="https://mail.proton.me" target="_blank">Ir a ProtonMail</a>
+  </div>
+</body>
+</html>
